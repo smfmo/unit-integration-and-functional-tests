@@ -26,6 +26,9 @@ public class Car {
     }
 
     public double calculateRentValue(int days) {
+        if (days >= 5) {
+            return days * dailyValue - 50;
+        }
         return days * dailyValue;
     }
 }
