@@ -1,4 +1,4 @@
-package io.github.smfmo.locadora.model;
+package io.github.smfmo.locadora.model.entities;
 
 public class Car {
 
