@@ -11,9 +11,7 @@ public class Reserve {
     public Reserve() {}
 
     public Reserve(Client client, Car car, Integer quantityDays) {
-        if (quantityDays <= 0) {
-            validateReservation(quantityDays);
-        }
+        validateReservation(quantityDays);
         this.client = client;
         this.car = car;
         this.quantityDays = quantityDays;
@@ -35,16 +33,11 @@ public class Reserve {
         return quantityDays;
     }
     public void setQuantityDays(Integer quantityDays) {
-        if (quantityDays <= 0) {
-            validateReservation(quantityDays);
-        }
         this.quantityDays = quantityDays;
     }
 
     public double calculateTotalReservation() {
-        if (quantityDays <= 0) {
-            validateReservation(quantityDays);
-        }
+        validateReservation(quantityDays);
         return car.calculateRentValue(quantityDays);
     }
 
