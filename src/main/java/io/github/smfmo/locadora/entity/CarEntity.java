@@ -1,7 +1,6 @@
 package io.github.smfmo.locadora.entity;
 
 import jakarta.persistence.*;
-
 import java.util.UUID;
 
 @Entity
