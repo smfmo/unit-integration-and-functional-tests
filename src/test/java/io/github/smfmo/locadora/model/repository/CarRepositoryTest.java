@@ -2,6 +2,7 @@ package io.github.smfmo.locadora.model.repository;
 
 import io.github.smfmo.locadora.entity.CarEntity;
 import io.github.smfmo.locadora.repository.CarRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,16 @@ import static org.assertj.core.api.Assertions.*;
 class CarRepositoryTest {
 
     final CarRepository repository;
+    CarEntity car;
 
     @Autowired
     public CarRepositoryTest(CarRepository repository) {
         this.repository = repository;
+    }
+
+    @BeforeEach
+    void createCar() {
+        car = new CarEntity("Sedan", 200.0, 2020);
     }
 
     @Test
@@ -37,15 +44,27 @@ class CarRepositoryTest {
     @Test
     @DisplayName("Este método deve buscar um carro pelo Id")
     void mustSearchCarById() {
-        CarEntity entity = new CarEntity("Sedan", 200.0, 2021);
+        CarEntity entitySaved = repository.save(car);
 
-        var entitySaved = repository.save(entity);
         Optional<CarEntity> entityFound = repository.findById(entitySaved.getId());
 
         assertThat(entityFound).isPresent();
         assertThat(entityFound.get().getModel()).isEqualTo("Sedan");
-        assertThat(entityFound.get().getYear()).isEqualTo(2021);
+        assertThat(entityFound.get().getYear()).isEqualTo(2020);
     }
 
+    @Test
+    void mustUpdateCar() {
+        CarEntity entitySaved = repository.save(car);
 
+        int updatedYear = 2021;
+        double updatedDailyValue = 150.0;
+
+        entitySaved.setYear(updatedYear);
+        entitySaved.setDailyValue(updatedDailyValue);
+        CarEntity entityUpdated = repository.save(entitySaved);
+
+        assertThat(entityUpdated.getYear()).isEqualTo(updatedYear);
+        assertThat(entityUpdated.getDailyValue()).isEqualTo(updatedDailyValue);
+    }
 }
