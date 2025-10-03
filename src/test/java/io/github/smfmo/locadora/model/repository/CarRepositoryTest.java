@@ -67,4 +67,16 @@ class CarRepositoryTest {
         assertThat(entityUpdated.getYear()).isEqualTo(updatedYear);
         assertThat(entityUpdated.getDailyValue()).isEqualTo(updatedDailyValue);
     }
+
+    @Test
+    @DisplayName("Este método deve excluir o carro do banco de dados.")
+    void mustDeleteCar() {
+        CarEntity entity = repository.save(car);
+
+        repository.deleteById(entity.getId());
+
+        Optional<CarEntity> entityFound = repository.findById(entity.getId());
+
+        assertThat(entityFound).isEmpty();
+    }
 }
