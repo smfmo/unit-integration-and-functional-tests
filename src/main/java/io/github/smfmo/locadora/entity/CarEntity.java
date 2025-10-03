@@ -11,17 +11,16 @@ public class CarEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "model")
     private String model;
-
-    @Column(name = "daily_value")
     private Double dailyValue;
+    private Integer year;
 
     public CarEntity() {}
 
-    public CarEntity(String model, Double dailyValue) {
+    public CarEntity(String model, Double dailyValue, Integer year) {
         this.model = model;
         this.dailyValue = dailyValue;
+        this.year = year;
     }
 
     public UUID getId() {
@@ -41,5 +40,11 @@ public class CarEntity {
     }
     public void setDailyValue(Double dailyValue) {
         this.dailyValue = dailyValue;
+    }
+    public Integer getYear() {
+        return year;
+    }
+    public void setYear(Integer year) {
+        this.year = year;
     }
 }
