@@ -1,6 +1,6 @@
 package io.github.smfmo.locadora.model.entities;
 
-import io.github.smfmo.locadora.model.exceptions.InvalidReservationException;
+import io.github.smfmo.locadora.exception.InvalidReservationException;
 
 public class Reserve {
 
