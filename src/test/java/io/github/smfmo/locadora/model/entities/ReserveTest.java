@@ -1,6 +1,6 @@
 package io.github.smfmo.locadora.model.entities;
 
-import io.github.smfmo.locadora.model.exceptions.InvalidReservationException;
+import io.github.smfmo.locadora.exception.InvalidReservationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
